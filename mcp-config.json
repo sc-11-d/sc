@@ -1,0 +1,80 @@
+{
+  "servers": [
+    {
+      "id": "mining-news-mcp",
+      "name": "Mining News MCP",
+      "description": "矿业新闻聚合服务，提供新闻搜索和文章内容获取功能",
+      "protocol": "http",
+      "host": "localhost",
+      "port": 8080,
+      "path": "/mcp",
+      "tools": [
+        {
+          "name": "search",
+          "description": "搜索矿业相关新闻",
+          "parameters": {
+            "query": "搜索关键词",
+            "limit": "返回结果数量"
+          }
+        },
+        {
+          "name": "fetch_article",
+          "description": "获取文章内容",
+          "parameters": {
+            "url": "文章链接"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mineral-pdf-mcp",
+      "name": "Mineral PDF MCP",
+      "description": "PDF 解析服务，特别用于提取 NI 43-101 储量报告数据",
+      "protocol": "http",
+      "host": "localhost",
+      "port": 8081,
+      "path": "/mcp",
+      "tools": [
+        {
+          "name": "extract_resources",
+          "description": "提取 PDF 文档中的资源数据",
+          "parameters": {
+            "pdf_url": "PDF 文件的 URL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lme-price-mcp",
+      "name": "LME Price MCP",
+      "description": "LME 金属价格服务，提供商品价格查询和走势分析",
+      "protocol": "http",
+      "host": "localhost",
+      "port": 8082,
+      "path": "/mcp",
+      "tools": [
+        {
+          "name": "get_price",
+          "description": "获取商品价格",
+          "parameters": {
+            "commodity": "商品名称",
+            "date": "日期"
+          }
+        },
+        {
+          "name": "get_trend",
+          "description": "获取商品价格走势",
+          "parameters": {
+            "commodity": "商品名称",
+            "days": "天数"
+          }
+        }
+      ]
+    }
+  ],
+  "agent": {
+    "name": "矿权日报 Agent",
+    "description": "自动化生成矿业日报简报，整合新闻、储量数据和价格走势",
+    "entry_point": "agent/agent.py"
+  }
+}
